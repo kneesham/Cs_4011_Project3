@@ -1,0 +1,25 @@
+
+.background-fader {
+    margin-top: 8%;
+    background-color: #ffffff;
+    opacity: 0.9;    
+    height: 50vh;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.uploadResultPage {
+    margin-top: 12%;
+    opacity: 1;    
+    background-color: white;
+}
+
+#progressBar {
+
+    width: 0px;
+    height: 10px;
+    background-color: green;
+
+}
