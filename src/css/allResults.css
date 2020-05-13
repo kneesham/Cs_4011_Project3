@@ -1,0 +1,39 @@
+.result-fader {
+    margin-top: 8%;
+    /* background-color: #f7bcd6; */
+    background-color: rgba(247,188,214,0.8);
+    border: 10px solid purple;
+    border-radius: 10px;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.allResultsPage {
+    height: 50%;
+    width: 50%;
+    opacity: 1;    
+    background-color: #fdf1f6;
+}
+
+.all-result-container {
+    width: 50%;
+    height: 70%;
+}
+.uploadHeaderText {
+    color:white;
+}
+
+.editForm {
+    height: 100%;
+    border: 5px solid purple;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-field {
+    width: 100%;
+}
