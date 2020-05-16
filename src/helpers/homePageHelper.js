@@ -1,9 +1,5 @@
-// import React from 'react';
 import axios from "axios";
-import history from '../history';;
 const addRecordUrl = "http://localhost:5000/addRecord";
-
-
 
 const addRecord = async (levelName, deathsRecorded, berriesCollected, timePlayed) => {
 
@@ -11,10 +7,10 @@ const addRecord = async (levelName, deathsRecorded, berriesCollected, timePlayed
     // local storage to hold the token so we only get it once.
     const posted = await axios.post(addRecordUrl, {
         record: {
-            userId: username, 
+            userId: username,
             recordInfo: {
                 levelName,
-                deathsRecorded:parseInt(deathsRecorded),
+                deathsRecorded: parseInt(deathsRecorded),
                 berriesCollected,
                 timePlayed
             },
@@ -22,45 +18,56 @@ const addRecord = async (levelName, deathsRecorded, berriesCollected, timePlayed
         }
     })
         .then(res => {
-            console.log(res.data);
+            window.location.reload();
         }).catch((error) => {
             console.log("sign in error: ", error);
         })
     return posted;
 }
 
-const getRecordUrl =  "http://localhost:5000/allResults/for/";
+const getRecordUrl = "http://localhost:5000/allResults/for/";
 const getUserRecords = async (userRecordHook) => {
     const token = localStorage.getItem("token");
-    console.log("do we still have token?, ", token);
     const username = localStorage.getItem("username");
-    console.log("username is: ", username);
     // local storage to hold the token so we only get it once.
-    const records = await axios.get((getRecordUrl + username ), { headers: { "Authorization": `Bearer ${token}` } })
+    const records = await axios.get((getRecordUrl + username), { headers: { "Authorization": `Bearer ${token}` } })
         .then(res => {
-            
-            console.log("resulting data frm get user records: ", res.data);
             return res.data;
-            
+
         }).catch((error) => {
             console.log("sign in error: ", error);
         });
-        userRecordHook(records);
-
+    userRecordHook(records);
 }
 
-// const logUserIn = async (userCredentialsObj) => {
+const getBestRecordsUrl = "http://localhost:5000/myRecords/records"
+const getUserTopRecords = async (topRecordHook) => {
+    const token = localStorage.getItem("token");
+    const topRecords = await axios
+        .get(`${getBestRecordsUrl}/${localStorage.getItem("username")}`, { headers: { "Authorization": `Bearer ${token}` } })
+        .then((res) => {
+            return res.data;
+        })
+        .catch(err => console.log(err.response.data));
+    topRecordHook(topRecords);
+}
 
-//     const didUserGetToken = await axios.post(getTokenUrl, userCredentialsObj)
-//     .then( async (result) => { 
-//         localStorage.setItem("token", result.data);
-//         console.log(await signIn());
+const updateRecordUrl = "http://localhost:5000/updateRecord/byid";
+const updateRecord = async (updatedObject, objectKey) => {
+    await axios
+        .patch(`${updateRecordUrl}/${objectKey}`, updatedObject)
+        .catch(err => console.log(err.response.data));
+    window.location.reload();
+}
 
-//     })
-//     .catch((error) => {
-//         console.log(error);
-//     });
-// }
+const deleteUrl = "http://localhost:5000/deleteRecord/byid";
+const deleteRecord = async (objectKey) => {
 
-export { addRecord, getUserRecords };
+    await axios
+        .delete(`${deleteUrl}/${objectKey}`)
+        .catch(err => console.log(err.response.data));
+    window.location.reload();
+}
+
+export { addRecord, getUserRecords, updateRecord, deleteRecord, getUserTopRecords };
 

@@ -1,0 +1,19 @@
+
+
+
+.background-fader-sign-out {  margin-top: 8%;
+/* background-color: #f7bcd6; */
+margin: auto;
+margin-top: 10%;
+background-color: rgba(247,188,214,0.8);
+border: 10px solid purple;
+border-radius: 100px;
+height: 50vh;
+width: 60%;
+display: flex;
+justify-content: center;
+}
+
+.sign-out-message {
+    margin-top: 50%;
+}

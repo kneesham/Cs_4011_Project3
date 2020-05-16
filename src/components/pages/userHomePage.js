@@ -5,9 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { GameResult } from "./gameResults";
 import AllResults from "./allResults";
 import RecordBook from "./recordBook";
-import { getUserRecords } from "../../helpers/homePageHelper";
+import { getUserRecords, getUserTopRecords } from "../../helpers/homePageHelper";
 import { withRouter, Link } from 'react-router-dom';
-
 
 const UserHomePage = () => {
     const [toggleWelcome, setToggleWelcome] = React.useState(true);
@@ -16,29 +15,24 @@ const UserHomePage = () => {
     const [toggleRecords, setToggleRecordBook] = React.useState(false);
     // to switch between the screens of the home page.
 
+    const [topRecordsObj, setTopObjects] = React.useState([]);
     const [userRecords, setUserRecords] = React.useState([]);
     // will be an array of user records
 
 
-    const toggleAllResults =  () => {
+    const toggleAllResults = () => {
         setToggleUpload(false);
-
         getUserRecords(setUserRecords);
         setToggleViewAll(true);
         setToggleRecordBook(false);
         setToggleWelcome(false);
-
-        
-
-
-
     };
     const toggleRecordBook = () => {
+        getUserTopRecords(setTopObjects);
         setToggleUpload(false);
         setToggleViewAll(false);
         setToggleRecordBook(true);
         setToggleWelcome(false);
-
     };
 
     const toggleUploadPage = () => {
@@ -46,9 +40,7 @@ const UserHomePage = () => {
         setToggleViewAll(false);
         setToggleRecordBook(false);
         setToggleWelcome(false);
-
     };
-
 
     return (
         <>
@@ -63,8 +55,8 @@ const UserHomePage = () => {
 
             <div className="flex-grid">
                 {toggleWelcome ? <div className="welcome-message"><h1>Welcome to Celeste Speed Runner!</h1></div> : <></>}
-                {toggleRecords ? <RecordBook /> :<></> }
-                {toggleViewAll? <AllResults userRecordArr={userRecords} /> :<></> }
+                {toggleRecords ? <RecordBook userTopRecord={topRecordsObj} /> : <></>}
+                {toggleViewAll ? <AllResults userRecordArr={userRecords} /> : <></>}
                 {toggleUpload ? <GameResult /> : <></>}
             </div>
         </>

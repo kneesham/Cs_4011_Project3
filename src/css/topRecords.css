@@ -1,0 +1,42 @@
+
+.background-fader-records {
+    margin-top: 8%;
+    background-color: rgba(247,188,214,0.8);
+    border: 10px solid purple;
+    border-radius: 100px;
+    height: 650vh;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+.cool-buttons {
+    background-color: lightskyblue;
+    border: 1px solid purple;
+    border-radius: 10px;
+    margin-left: 5%; 
+}
+.record-results {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.record-res {
+    width: 100%;
+}
+.allResultsPage {
+    flex: 1 0 80%;
+}
+
+.message {
+
+    margin: none;
+}
+
+.level-name {
+
+    color: cornsilk;
+}

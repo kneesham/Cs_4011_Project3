@@ -11,14 +11,16 @@
 
 
 .allResultsPage {
+    margin: 10%;
+    padding: 3%;
     height: 50%;
-    width: 50%;
+    width: 80%;
     opacity: 1;    
-    background-color: #fdf1f6;
+    background-color: #000000;
 }
 
 .all-result-container {
-    width: 50%;
+    width: 30%;
     height: 70%;
 }
 .uploadHeaderText {
@@ -28,12 +30,33 @@
 .editForm {
     height: 100%;
     border: 5px solid purple;
+    color: aliceblue;
+    margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
-    display: flex;
+    padding-left: 5%;
+    padding-right:5%;
+    padding-top: 3%;
+    padding-bottom: 3%;
     justify-content: space-between;
 }
 
 .edit-field {
     width: 100%;
+    background-color: aquamarine;
 }
+
+.hide-this {
+    display: none;
+}
+
+.record-res {
+    margin-top: .2%;
+    margin-left: 2%;
+    margin-bottom: .2%;
+    color: aquamarine;
+}
+.message {
+    color: red;
+}
+

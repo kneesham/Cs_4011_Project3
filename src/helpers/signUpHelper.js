@@ -1,28 +1,17 @@
-const url = "http://localhost:5000/createAccount"
 
-const didUserSignUp = async () => {
-    if (showSignUp) {
+import history from './../history';
+import axios from "axios";
 
-        const userObj = {
-            username: "u",
-            password: "pass"
-        }
-        try {
-            agent.post(url, null, userObj, {
+const url = "http://localhost:5000/createAccount";
+const SignUpFunc = (userCredentialsObj) => {
 
-            })
-
-        }
-        catch (err) {
-            console.log(err);
-        }
-
-        console.log("creating a user ", userObj);
-
-
-    } else {
-        switchForms();
-    }
-
-
+    axios.post(url, userCredentialsObj)
+        .then((result) => {
+            history.push("/");
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 }
+
+export { SignUpFunc };

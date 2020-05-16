@@ -1,12 +1,10 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import "./css/styles.css";
 import { BrowserRouter as Router } from 'react-router-dom';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import { Routes } from "./Routes";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./css/styles.css";
 
 const Main = () => {
   return (
